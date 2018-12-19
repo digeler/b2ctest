@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: asp
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: aspb2c.9ab046d6c2c84840b588.eastus2.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: aspnet
+          servicePort: 5000
+        path: /

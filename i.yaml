@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    name: test
+    
+  spec:
+    rules:
+      - host: aspb2c.test.com
+        http:
+          paths:
+            - backend:
+                serviceName: asp
+                servicePort: 5000
+              path: /
+    # This section is only required if TLS is to be enabled for the Ingress
+    tls:
+        - hosts:
+            - aspb2c.test.com
+          secretName: aspnett-secret
+
